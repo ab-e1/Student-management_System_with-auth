@@ -12,7 +12,6 @@ const visibleInfo = (data) => {
     name: data.name,
     email: data.email,
     role: data.role,
-    registerdAt: data.registerdAt,
   };
 };
 
