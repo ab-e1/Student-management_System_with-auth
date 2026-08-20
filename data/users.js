@@ -1,3 +1,5 @@
+const bcrypt = require("bcrypt");
+
 const users = [
   {
     id: 1,
@@ -16,6 +18,6 @@ const users = [
   },
 ];
 const nextId = () => {
-  return users.length ? Math.max(users.map((s) => s.id)) + 1 : 1;
+  return users.length ? Math.max(...users.map((s) => s.id)) + 1 : 1;
 };
 module.exports = { users, nextId };

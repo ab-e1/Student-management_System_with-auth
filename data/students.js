@@ -11,7 +11,7 @@ const students = [
 ];
 
 const nextId = () => {
-  return students.length ? Math.max(students.map((s) => s.id)) + 1 : 1;
+  return students.length ? Math.max(...students.map((s) => s.id)) + 1 : 1;
 };
 
 module.exports = { students, nextId };
