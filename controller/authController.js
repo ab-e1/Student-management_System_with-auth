@@ -6,7 +6,7 @@ const register = (req, res) => {
   if (!result.ok) {
     return failure(res, result.error, 400);
   }
-  return success(res, { ...result.data, token: result.token });
+  return success(res, result.data, 201, result.token);
 };
 
 const login = (req, res) => {
@@ -14,7 +14,7 @@ const login = (req, res) => {
   if (!result.ok) {
     return failure(res, result.error, 400);
   }
-  return success(res, { ...result.data, token: result.token });
+  return success(res, result.data, 200, result.token);
 };
 const logout = (req, res) => {
   return success(res, { message: "logout succesfull" });

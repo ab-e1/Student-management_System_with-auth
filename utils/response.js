@@ -1,5 +1,5 @@
-const success = (res, data, statusCode = 200) => {
-  res.status(statusCode).json({ ok: true, data: data });
+const success = (res, data, statusCode = 200, token) => {
+  res.status(statusCode).json({ ok: true, data: data, token: token });
 };
 
 const failure = (res, error, statusCode = 400) => {
