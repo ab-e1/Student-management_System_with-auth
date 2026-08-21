@@ -16,5 +16,11 @@ const login = (req, res) => {
   }
   return success(res, { ...result.data, token: result.token });
 };
+const logout = (req, res) => {
+  return success(res, { message: "logout succesfull" });
+};
+const me = (req, res) => {
+  return success(res, req.user);
+};
 
-module.exports = { register, login };
+module.exports = { register, login, logout, me };
