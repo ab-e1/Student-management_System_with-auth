@@ -19,7 +19,7 @@ const createUser = (data) => {
     name: data.name,
     email: data.email.toLowerCase(),
     password: bcrypt.hashSync(data.password, 10),
-    role: data.role.toLowerCase(),
+    role: "user",
   };
   users.push(user);
   return {
@@ -50,7 +50,7 @@ const deleteUser = (id) => {
   };
 };
 
-const updateUser = (id, ...data) => {
+const updateUser = (id, data) => {
   const index = users.findIndex((u) => u.id === Number(id));
   if (index === -1) {
     return { ok: false, error: "no user found with the given id" };
