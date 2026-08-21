@@ -68,10 +68,10 @@ const validatePassword = (password) => {
   if (password.length < 8) {
     error.push("password must be aleast 8 characters long");
   }
-  if (!/A-Z/.test(password)) {
+  if (!/[A-Z]/.test(password)) {
     error.push("password must conatain atleast one capital letter");
   }
-  if (!/a-z/.test(password)) {
+  if (!/[a-z]/.test(password)) {
     error.push("password must contain atleast one small letter");
   }
   if (!/\d/.test(password)) {
