@@ -9,8 +9,7 @@ const register = (data) => {
   if (!user.ok) {
     return user;
   }
-  const { password, ...userWithoutPassword } = user.data;
-  const token = signToken(userWithoutPassword);
+  const token = signToken(user.data);
 
   return {
     ok: true,
