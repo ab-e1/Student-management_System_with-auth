@@ -2,23 +2,16 @@ const { failure } = require("../utils/response.js");
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 const validateUser = (req, res, next) => {
-  const { name, email, password, role } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!name || !email || !password || role) {
+  if (!name || !email || !password) {
     return failure(res, "missing required fields");
   }
-  if (
-    typeof name !== "string" ||
-    typeof email !== "string" ||
-    typeof role !== "string"
-  ) {
-    return failure(res, "name , email, and role should bea string");
+  if (typeof name !== "string" || typeof email !== "string") {
+    return failure(res, "name , email should be a string");
   }
-  if (name.trim() === "" || email.trim() === "" || role.trim() === "") {
-    return failure(res, "name, email, and role can not be empyt");
-  }
-  if (role !== "admin" && role !== "user") {
-    return failure(res, "invalid role, should be admin or user");
+  if (name.trim() === "" || email.trim() === "") {
+    return failure(res, "name and email can not be empyt");
   }
   if (!emailRegex.test(email)) {
     return failure(
@@ -34,7 +27,7 @@ const validateUser = (req, res, next) => {
 };
 // validate student
 
-const validateStudent = (res, req, next) => {
+const validateStudent = (req, res, next) => {
   const { name, email, age, course, gpa, status } = req.body;
   if (!name || !email || !age || !course || !gpa || !status) {
     return failure(res, "missing required fields");
@@ -64,9 +57,10 @@ const validateStudent = (res, req, next) => {
   if (age <= 0) {
     return failure(res, "age should be a positive number ");
   }
-  if (gpa < 0 && gpa > 4.0) {
+  if (gpa < 0 || gpa > 4.0) {
     return failure(res, "gpa should be non negative and less than 4");
   }
+  next();
 };
 
 const validatePassword = (password) => {
