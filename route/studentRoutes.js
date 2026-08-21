@@ -7,6 +7,7 @@ const auth = require("../middleware/authMiddleware.js");
 const router = Router();
 
 router.get("/", studentServices.getAllStudents);
+router.get("/stats", studentServices.getStats);
 router.get("/:id", studentServices.getStudentById);
 router.post(
   "/",
@@ -22,12 +23,13 @@ router.put(
   validateStudent,
   studentServices.updateStudent,
 );
-router.delete(
+router.patch(
   "/:id",
   auth,
   roleCheck("admin"),
   validateStudent,
-  studentServices.deleteStudent,
+  studentServices.updateStudent,
 );
+router.delete("/:id", auth, roleCheck("admin"), studentServices.deleteStudent);
 
 module.exports = router;
