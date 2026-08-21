@@ -33,7 +33,7 @@ const createUser = (data) => {
 const getAllUsers = () => {
   return {
     ok: true,
-    data: users,
+    data: users.map(visibleInfo),
   };
 };
 
