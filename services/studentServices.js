@@ -32,7 +32,7 @@ const createStudent = (data) => {
 
 // update Student
 
-const updateStudent = (id, ...data) => {
+const updateStudent = (id, data) => {
   const index = students.findIndex((s) => s.id === Number(id));
   if (index === -1) {
     return {
@@ -90,7 +90,7 @@ const getAllStudent = (query) => {
     result = result.filter(
       (s) =>
         s.name.toLowerCase().trim().includes(keyWord) ||
-        s.email.toLowerCase().trim.includes(keyWord),
+        s.email.toLowerCase().trim().includes(keyWord),
     );
   }
   if (query.status) {
@@ -117,7 +117,6 @@ const getAllStudent = (query) => {
     data: result,
   };
 };
-
 
 // getStatistics
 
