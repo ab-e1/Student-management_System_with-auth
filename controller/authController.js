@@ -1,5 +1,5 @@
 const authServices = require("../services/authServices.js");
-const { success, failure } = require("../utils/response.js");
+const { success, failure, visibleInfo } = require("../utils/response.js");
 
 const register = (req, res) => {
   const result = authServices.register(req.body);
@@ -20,7 +20,7 @@ const logout = (req, res) => {
   return success(res, { message: "logout succesfull" });
 };
 const me = (req, res) => {
-  return success(res, req.user);
+  return success(res, visibleInfo(req.user));
 };
 
 module.exports = { register, login, logout, me };
