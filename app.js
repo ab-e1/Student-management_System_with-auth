@@ -2,7 +2,6 @@ const express = require("express");
 const userRoutes = require("./route/userRoutes.js");
 const studentRoutes = require("./route/studentRoutes.js");
 const authRoute = require("./route/authRoute.js");
-const erroHandler = require("./middleware/errorHandeler.js");
 const logger = require("./middleware/logger.js");
 const errorHandeler = require("./middleware/errorHandeler.js");
 
